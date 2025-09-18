@@ -1,0 +1,52 @@
+import { Router } from "express";
+
+import userRouter from "./users/route";
+import { Authenticate } from "../common/utils";
+import postRouter from "./posts/route";
+import followRouter from "./follow/route";
+import postLikeRouter from "./post-likes/route";
+import notificationRouter from "./notifications/route";
+import dmRouter from "./dms/route";
+import communityMemberRouter from "./community-members/route";
+import communityRouter from "./community/route";
+import walletRouter from "./wallets/route";
+import transactionRouter from "./transactions/route";
+import pinRouter from "./pins/route";
+import SubscriptionRouter from "./subscriptions/route";
+import eventRouter from "./events/route";
+import housingRouter from "./housing/route";
+import foodRouter from "./foods/route";
+import orderRouter from "./orders/route";
+import metaverseRouter from "./metaverse/route";
+import metaverseEventRouter from "./metaverse-event/route";
+import metaversePropertyRouter from "./metaverse-properties/route";
+import vtuRouter from "./vtu/route";
+import adminRouter from "./admin/route";
+import metaverseAssetRouter from "./metaverse-assets/route";
+
+const router = Router();
+router.use("/users", userRouter);
+router.use("/admins", adminRouter);
+router.use("/dms", Authenticate, dmRouter);
+router.use("/vtu", Authenticate, vtuRouter);
+router.use("/pins", Authenticate, pinRouter);
+router.use("/posts", Authenticate, postRouter);
+router.use("/foods", Authenticate, foodRouter);
+router.use("/orders", Authenticate, orderRouter);
+router.use("/events", Authenticate, eventRouter);
+router.use("/wallets", Authenticate, walletRouter);
+router.use("/follows", Authenticate, followRouter);
+router.use("/housing", Authenticate, housingRouter);
+router.use("/metaverse", Authenticate, metaverseRouter);
+router.use("/post-likes", Authenticate, postLikeRouter);
+router.use("/communities", Authenticate, communityRouter);
+router.use("/transactions", Authenticate, transactionRouter);
+router.use("/subscriptions", Authenticate, SubscriptionRouter);
+router.use("/notifications", Authenticate, notificationRouter);
+router.use("/metaverse-events", Authenticate, metaverseEventRouter);
+router.use("/metaverse-assets", Authenticate, metaverseAssetRouter);
+router.use("/community-members", Authenticate, communityMemberRouter);
+router.use("/metaverse-properties", Authenticate, metaversePropertyRouter);
+
+
+export default router;
