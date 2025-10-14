@@ -18,8 +18,8 @@ export const basicUserValidation = z
 export const createSchema = z
     .object({
         description: z
-            .string({ required_error: "What's on your mind today?" })
-            .nonempty(),
+            .string()
+            .optional(),
         attachments: z.array(z.string()).optional(),
     })
     .strict()

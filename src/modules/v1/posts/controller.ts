@@ -12,7 +12,9 @@ export const create = async (
     res: Response,
     next: NextFunction
 ) => {
+    const { description, attachments } = req.body;
     try {
+        if (!description && !attachments) throw catchError("Both descripton and attachment cannot be empty", 400);
         const [_, crtError] = await tryPromise(
             new PostService({}).create({
                 ...req.body,
