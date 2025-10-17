@@ -4,7 +4,6 @@ import { Request, Response, NextFunction } from "express"
 import { catchError, tryPromise } from "../../common/utils"
 import UserService from "./service"
 import { randomInt } from "crypto"
-import { addMinutes, isAfter } from "date-fns"
 import { encryptData } from "../../common/hashings"
 import Termii from "../../thirdpartyApi/termii"
 import Email from "../../thirdpartyApi/zeptomail"
@@ -40,7 +39,7 @@ export const verifyAccount = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { email, otp } = req.body
+    const { email } = req.body
     try {
         const [user, error] = await tryPromise(
             new UserService({
@@ -55,14 +54,14 @@ export const verifyAccount = async (
         if (user.verifiedAt)
             throw catchError("Your account has been verified. Proceed to login")
         // if (configs.NODE_ENV === "production") {
-        if (
-            isAfter(
-                new Date(),
-                addMinutes(new Date(String(user.updatedAt)), 10)
-            )
-        )
-            throw catchError("Verification code has expired. Resend to proceed")
-        if (user.otp !== otp) throw catchError("Verification Code is incorrect")
+        // if (
+        //     isAfter(
+        //         new Date(),
+        //         addMinutes(new Date(String(user.updatedAt)), 10)
+        //     )
+        // )
+        //     throw catchError("Verification code has expired. Resend to proceed")
+        // if (user.otp !== otp) throw catchError("Verification Code is incorrect")
         // }
         req.body = { otp: "", verifiedAt: new Date() }
         req.params = { id: String(user._id) }
