@@ -243,6 +243,7 @@ export const forSale = async (
     next: NextFunction
 ) => {
     const { _id } = req.params
+    const { forSale, price } = req.body;
     try {
         const property = await new MetaversePropertyServiceService({
             _id,
@@ -252,7 +253,8 @@ export const forSale = async (
             throw catchError("Cannot perform operation")
 
         const resp = await new MetaversePropertyServiceService({ _id }).update({
-            forSale: req.body.forSale,
+            forSale,
+            price
         })
 
         return res.status(200).json(success("Property updated", resp))
