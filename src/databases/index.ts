@@ -22,3 +22,4 @@ export { default as MetaverseAssetModel } from "./models/metaverse-asset";
 export { default as MetaverseEventModel } from "./models/metaverse-event";
 export { default as CommunityMemberModel } from "./models/community-member";
 export { default as MetaversePropertyModel } from "./models/metaverse-properties";
+export { default as HotelModel } from "./models/hotel";

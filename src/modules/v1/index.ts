@@ -23,6 +23,7 @@ import metaversePropertyRouter from "./metaverse-properties/route";
 import vtuRouter from "./vtu/route";
 import adminRouter from "./admin/route";
 import metaverseAssetRouter from "./metaverse-assets/route";
+import hotelRouter from "./hotels/route";
 
 const router = Router();
 router.use("/users", userRouter);
@@ -32,6 +33,7 @@ router.use("/vtu", Authenticate, vtuRouter);
 router.use("/pins", Authenticate, pinRouter);
 router.use("/posts", Authenticate, postRouter);
 router.use("/foods", Authenticate, foodRouter);
+router.use("/hotels", Authenticate, hotelRouter);
 router.use("/orders", Authenticate, orderRouter);
 router.use("/events", Authenticate, eventRouter);
 router.use("/wallets", Authenticate, walletRouter);
