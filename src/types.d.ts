@@ -76,6 +76,18 @@ interface IDM extends DefaultAttributes {
     }
 }
 
+interface IHotel extends DefaultAttributes {
+    name: string;
+    user: string;
+    duration: number;
+    startDate: Date;
+    endDate: Date;
+    meta: Record<string, any>;
+    paid: boolean;
+    amount: number;
+    totalAmount: number;
+}
+
 interface IChat extends DefaultAttributes {
     roomId: string
     message: string
